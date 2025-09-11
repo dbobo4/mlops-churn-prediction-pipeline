@@ -21,11 +21,13 @@ performance validation, staging/archiving of models, and **email alerts** if deg
 
 ## 📂 Project Structure
 
+```text
 MLops-Churn-Prediction-Pipeline/
 │
 ├── airflow_data_comparison_upload/          Upload folder watched by watchdog & Airflow
 ├── dags/                                    Airflow DAG definitions
 │   └── monitor_csv_folder_for_training.py
+├── pictures/                                Pipeline screenshots for README
 ├── reports/                                 Generated Evidently reports (HTML + JSON)
 ├── tests/                                   Unit tests for training/inference pipelines
 │
@@ -50,6 +52,7 @@ MLops-Churn-Prediction-Pipeline/
 ├── WA_Fn-UseC_-Telco-Customer-Churn_20.csv  Sample dataset (20%)
 ├── WA_Fn-UseC_-Telco-Customer-Churn_30.csv  Sample dataset (30%)
 └── WA_Fn-UseC_-Telco-Customer-Churn_50.csv  Sample dataset (50%)
+
 
 
 ## 📑 File Descriptions
@@ -257,46 +260,47 @@ These views show how the new data differs from the training data of the staging 
 ## Pipeline Execution Screenshots
 
 Below are example screenshots captured during the execution of the pipeline components.  
-All images are located in the `picture/` folder.
+All images are located in the `pictures/` folder.
 
 ### 1. Swagger UI
-![Swagger UI](picture/1_api_swagger_ui.jpg)
+![Swagger UI](pictures/1_api_swagger_ui.jpg)
 
 ### 2. Training Success
-![Training Success](picture/2_train_success.jpg)
+![Training Success](pictures/2_train_success.jpg)
 
 ### 3. MLflow Experiment Log Success
-![MLflow Experiment Log Success](picture/3_mlflow_experiment_log_success.jpg)
+![MLflow Experiment Log Success](pictures/3_mlflow_experiment_log_success.jpg)
 
 ### 4. Prediction Inference Success
-![Prediction Inference Success](picture/4_predict_inference_success.jpg)
+![Prediction Inference Success](pictures/4_predict_inference_success.jpg)
 
 ### 5. Airflow DAG Presence
-![Airflow DAG Presence](picture/5_airflow_dag_presence.jpg)
+![Airflow DAG Presence](pictures/5_airflow_dag_presence.jpg)
 
 ### 6. DAG Run Success
-![DAG Run Success](picture/6_dag_run_success.jpg)
+![DAG Run Success](pictures/6_dag_run_success.jpg)
 
 ### 7. DAG Graph Success
-![DAG Graph Success](picture/7_dag_graph_success.jpg)
+![DAG Graph Success](pictures/7_dag_graph_success.jpg)
 
 ### 8. Evaluate Batch Success
-![Evaluate Batch Success](picture/8_evaluate_batch_success.jpg)
+![Evaluate Batch Success](pictures/8_evaluate_batch_success.jpg)
 
 ### 9. Dashboard Inspect Tab
-![Dashboard Inspect](picture/9_dashboard_inspect.jpg)
+![Dashboard Inspect](pictures/9_dashboard_inspect.jpg)
 
 ### 10. Dashboard Drift Report
-![Dashboard Drift Report](picture/10_dashboard_drift_report.jpg)
+![Dashboard Drift Report](pictures/10_dashboard_drift_report.jpg)
 
 ### 11. Dashboard Quality Tests
-![Dashboard Quality Tests](picture/11_dashboard_quality_tests.jpg)
+![Dashboard Quality Tests](pictures/11_dashboard_quality_tests.jpg)
 
 ### 12. Dashboard Suite Report
-![Dashboard Suite Report](picture/12_dashboard_suite_report.jpg)
+![Dashboard Suite Report](pictures/12_dashboard_suite_report.jpg)
 
 ### 13. Push Notification Message
-![Push Notification Message](picture/13_push_message.jpg)
+![Push Notification Message](pictures/13_push_message.jpg)
+
 
 
 
