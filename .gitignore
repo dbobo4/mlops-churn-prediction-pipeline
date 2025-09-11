@@ -1,0 +1,4 @@
+# ─── Sensitive environment variables ─────────────────────────────
+# Contains SMTP credentials (username, password) and REST API auth.
+# MUST never be committed to GitHub.
+.env.smtp

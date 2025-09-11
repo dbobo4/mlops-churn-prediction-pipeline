@@ -1,0 +1,24 @@
+name: airflow_mlops
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - flask
+  - flask-restx
+  - lightgbm
+  - mlflow
+  - numpy
+  - pandas
+  - scikit-learn
+  - xgboost
+  - optuna
+  - streamlit=1.46.1
+  - apache-airflow=2.8.1
+  - apache-airflow-providers-postgres
+  - apache-airflow-providers-http
+  - watchdog
+  - pip
+  - pip:
+      - evidently==0.7.9
+      - waitress

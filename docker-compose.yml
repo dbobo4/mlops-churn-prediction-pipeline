@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  airflow:
+    build: .                                 # Builds the Docker image from the Dockerfile in this directory, not from Docker Hub
+    image: airflow_mlops_image               # Optional: assigns this name to the built image
+    container_name: airflow_mlops_container  # Human-readable name for the running container
+    ports:
+      - "8080:8080"                          # Airflow Web UI
+      - "5102:5102"                          # MLflow Tracking Server
+      - "8000:8000"                          # Flask REST API
+      - "8501:8501"                          # Streamlit Dashboard
+    env_file:
+      - .env.smtp                            # Loads all AIRFLOW__SMTP__... env variables from this file
+    restart: unless-stopped                  # Automatically restarts the container if it crashes or on reboot
+
+# ┌─────────────────────────────────────────────────────────────────────────────┐
+# │                    PROJECT STRUCTURE ON THE SERVER                          │
+# └─────────────────────────────────────────────────────────────────────────────┘
+# Place all the following files and folders in a single project directory:
+#
+# project/
+# ├── Dockerfile                           # Builds your custom image for Airflow + MLflow + API + dashboard
+# ├── docker-compose.yml                   # This file, declares the services, ports, env variables
+# ├── .env.smtp                            # Sensitive env vars for Airflow (ignored by Git, never commit!)
+# ├── airflow/
+# │   └── dags/                            # Your DAG Python files
+# ├── airflow_data_comparison_upload/     # Folder monitored by watchdog for incoming CSV files
+# ├── application.py                       # Flask REST API entry point
+# ├── dashboard.py                         # Streamlit dashboard
+# ├── MLModel.py                           # Your ML model class
+# ├── utils.py                             # Helper functions used across components
+# ├── report_generator.py                  # Report generation logic (e.g. comparison, evaluation)
+# ├── watchdog_csv_uploader.py            # Watches the upload folder, triggers DAGs via Airflow API
+# ├── environment.yml                      # Conda environment definition
+# ├── .gitignore                           # MUST include `.env.smtp` to avoid leaking secrets
+#
+# Use `scp`, `rsync`, or Git (without .env.smtp) to upload these to your server.
+
+# ┌─────────────────────────────────────────────────────────────────────────────┐
+# │                  HOW TO START THE PROJECT ON THE SERVER                     │
+# └─────────────────────────────────────────────────────────────────────────────┘
+#
+# ➤ If the Docker image has NOT been built yet (recommended on first deploy):
+#     docker-compose up -d --build
+#
+# ➤ If you want to force a clean rebuild without using cached layers:
+#     docker-compose build --no-cache
+#     docker-compose up -d
+#
+# ➤ If the Docker image has ALREADY been built before:
+#     docker-compose up -d
+#
+# ➤ To stop and remove the running container:
+#     docker-compose down
+#
+# ➤ To manually stop and clean everything (alternative):
+#     docker stop airflow_mlops_container
+#     docker rm airflow_mlops_container
+#     docker rmi airflow_mlops_image
+#     # Then check Docker Desktop or `docker images` to verify cleanup
+#     docker build --no-cache -t airflow_mlops_image .
+#
+# ➤ To rebuild after code or Dockerfile changes:
+#     docker-compose up -d --build
+#
+# ➤ To check logs (live/follow):
+#     docker logs -f airflow_mlops_container
+#
+# ➤ To enter the container shell:
+#     docker exec -it airflow_mlops_container bash
+#
+# ➤ To see all running containers:
+#     docker ps
