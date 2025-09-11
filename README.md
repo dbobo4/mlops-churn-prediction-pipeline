@@ -53,8 +53,7 @@ MLops-Churn-Prediction-Pipeline/
 ├── WA_Fn-UseC_-Telco-Customer-Churn_30.csv  Sample dataset (30%)
 └── WA_Fn-UseC_-Telco-Customer-Churn_50.csv  Sample dataset (50%)
 
-
-
+   ```
 ## 📑 File Descriptions
 
 ### 1. data_understanding_and_data_handling.ipynb
