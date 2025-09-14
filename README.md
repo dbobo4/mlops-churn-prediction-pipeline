@@ -9,11 +9,12 @@ to **deployment, monitoring, and reporting**.
 
 All components run inside Docker, providing a portable and production-like environment.  
 
-🔧 **Key technologies integrated:**
+**Key technologies integrated:**
 - **MLflow** – experiment tracking, model registry, and artifact management  
 - **Apache Airflow** – workflow orchestration and automation (DAG-based)  
 - **Flask REST API** – serving models and exposing training/inference endpoints (with Swagger UI)  
 - **Streamlit Dashboard** – real-time monitoring of data drift, quality checks, and model stability  
+- **Evidently AI** – generating drift, quality, and stability reports for continuous model validation  
 
 This pipeline simulates an industrial MLOps setup where **new data ingestion automatically triggers retraining**,  
 performance validation, staging/archiving of models, and **email alerts** if degradations occur.  
